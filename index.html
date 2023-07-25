@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Tricks!</title>
+</head>
+
+<body>
+    <p onclick="makeGreen()" style="cursor:cursor-pointer;">Lorem ipsum dolor, sit amet consectetur Sunt, deserunt.</p>
+    <script>
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+        const cats = [{ name: 'Happy', age: 1.5 }, { name: 'Julie', age: 3 }, { name: 'Meenu', age: 2 }];
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = "Green";
+            p.style.fontSize = "50px";
+        }
+        //Regular 
+        console.log('Hello');
+
+        //Interrpolated
+        console.log('hello I am a %s string!', "(replaced)")
+        //but `` are more useful
+
+        //styled
+        console.log('%c Iam Stylish', 'font-size:50px; background: blue');
+
+        //warning!
+        console.warn('Oh Nooo!');
+
+        //Error!
+        console.error('shit!');
+
+        //Info
+        console.info('crocodiles eat 3-4 people per year');
+
+        //Testing 
+        const p = document.querySelector('p');
+
+        console.assert(p.classList.contains("Yeti"), 'You did not select the right Element!');
+
+        //clearing 
+        // console.clear();
+
+        //Viewing DOM Elements
+        console.dir(p);
+
+        //Grouping Together
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`);
+            console.log(`this is ${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} year old`);
+            console.groupEnd(`${dog.name}`)
+        })
+        cats.forEach(cats => {
+            console.groupCollapsed(`${cats.name}`);
+            console.log(`this is ${cats.name}`);
+            console.log(`${cats.name} is ${cats.age} year old`);
+            console.groupEnd(`${cats.name}`)
+        })
+        //count
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        console.count('Keshav');
+        
+        //timing
+        console.time('fetch data');
+        fetch('https://coronavirus.m.pipedream.net/')
+          .then(data => data.json())
+          .then(data => {
+            console.timeEnd('fetch data')
+            console.table(data)
+          });
+
+        //table
+        console.table(dogs)
+        console.table(cats)
+
+    </script>
+</body>
+
+</html>
